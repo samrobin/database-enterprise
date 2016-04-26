@@ -1,3 +1,22 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+	//$sql = "SELECT * FROM master_barang";
+	//$hasil = mysqli_query($k,$sql);
+	
+	$sql = "SELECT * FROM master_brand";
+	$hasil = mysqli_query($k,$sql);
+	
+	$sql2 = "SELECT * FROM master_category";
+	$hasil2 = mysqli_query($k,$sql2);
+	
+	if(isset($_GET['ed']) && $_GET['ed'] == true)
+	{
+		$sql = "SELECT * FROM master_barang WHERE id_bar = $_GET[id]";
+		$hasil_edit = mysqli_query($k,$sql);
+		$b_edit = mysqli_fetch_array($hasil_edit);
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,72 +144,67 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <div class="form-group">
-												<select class="form-control">
-													<option>Handphone</option>
-													<option>Laptop</option>
-													<option>Tablet</option>
-													
-												</select>
-											</div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Brand</label>
-                                            <div class="form-group">
-												<select class="form-control">
-													<option>Samsung</option>
-													<option>Asus</option>
-													<option>Xiaomi</option>
-													<option>Sony</option>
-													<option>Infinix</option>
-												</select>
-											</div>
-                                        </div>
+										<?php
+										if(isset($_GET['ed']) && $_GET['ed'] == true){
+										?>
+                                    <form role="form" action="masterproduct_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+                   						<div class="form-group">
+										<label>Category</label>
+										<select name="category" class="form-control">
+										<?php
+										while($b = mysqli_fetch_array($hasil2)){
+										?>
+										<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
+										<?php } ?>
+										</select>
+										</div> 
+									
+										<div class="form-group">
+										<label>Brand</label>
+										<select name="brand" class="form-control">
+										<?php
+										while($b = mysqli_fetch_array($hasil)){
+										?>
+										<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
+										<?php } ?>
+										</select>
+										</div>
+										
 										<div class="form-group">
                                             <label>Product Code</label>
-                                            <input class="form-control" value="asdas">
-                                        </div>
+                                            <input type="text" name="kode" class="form-control" value="<?php echo $b_edit['kode_bar'];?>"/>
+									   </div>
 										<div class="form-group">
                                             <label>Product Name</label>
-                                            <input class="form-control" value="asdDAS">
+                                            <input type="text" name="nama" class="form-control" value="<?php echo $b_edit['nama_bar'];?>"/>
                                         </div>
 										<div class="form-group">
                                             <label>Buy Price</label>
-                                            <input class="form-control" value=123123>
-                                           
+                                            <input type="text" name="hargabeli" class="form-control" value="<?php echo $b_edit['hargabeli_bar'];?>"/>
                                         </div>
 										<div class="form-group">
                                             <label>Sell Price</label>
-                                            <input class="form-control" value=123123>
-                                           
+                                            <input type="text" name="hargajual" class="form-control" value="<?php echo $b_edit['hargajual_bar'];?>"/>
                                         </div>
 										
+										<div class="col-lg-6">
+										<div class="form-group">
+										<label>foto</label>
+										<img src="<?php echo $b_edit['foto_bar']; ?>" />
+										<input type = "file" name="foto" />
+										</div class="form-group">
+										</div>
                                       
-										
-                                        <button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Save</a></button>
+										<input type="submit" name="edit" value="Save" class="btn btn-default"/>
 										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>
                                         <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Delete</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Exit</a></button>
 										
+										
                                     </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                               
-							    <div class="col-lg-6">
-									<div class="form-group">
-										<table border = 1>
-											<td width=275px height=250px></td>										
-										</table>
-									</div>
-									<div class="form-group">
-										<label>File input</label>
-										<input type="file">
-									</div>
-                                    
+									
+								<?php } ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
