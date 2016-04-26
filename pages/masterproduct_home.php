@@ -1,3 +1,11 @@
+<?php
+require_once("../pages/lib/koneksi2.php");
+	
+$sql = "SELECT id_bar, kode_bar, nama_bar, hargabeli_bar, hargajual_bar, stok_bar
+				FROM master_barang";
+$hasil = mysqli_query($k,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,31 +141,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="location.href='masterproduct_edit.html'">
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-											<td>4</td>
-                                        </tr>
-                                        <tr onclick="location.href='masterproduct_edit.html'">
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-											<td>4</td>
-                                        </tr onclick="location.href='masterproduct_edit.html'">
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-											<td>4</td>
-                                        </tr>
+									 <?php
+									$i = 1;
+									while($b = mysqli_fetch_array($hasil)){
+									?>
+									<tr onclick="location.href='masterproduct_edit.php?ed=true&id=<?php echo $b['id_bar']; ?>'">
+									<td><?php echo $i; ?></td>
+									<td><?php echo $b['kode_bar']; ?></td>
+									<td><?php echo $b['nama_bar']; ?></td>
+									<td><?php echo $b['hargajual_bar']; ?></td>
+									<td><?php echo $b['stok_bar']; ?></td>
+									</tr>
+								<?php
+									$i++;
+								}
+								?>
                                     </tbody>
                                 </table>
-                            
-                            <button type="submit" class="btn btn-default"><a href="masterproduct_add.html">Add</a></button>
+                                       
+                            <button type="submit" class="btn btn-default"><a href="masterproduct_add.php">Add</a></button>
                             
 							
                             </div>
