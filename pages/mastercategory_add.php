@@ -1,3 +1,10 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+	
+	$sql = "SELECT * FROM master_category";
+	$hasil = mysqli_query($k,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,16 +130,16 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">  
-										
+                                     
+										<form role="form" action="mastercategory_add_proses.php" method="post">
 										<div class="form-group">
                                             <label>Category Name</label>
-                                            <input class="form-control">
-                                        </div>
+                                            <input type="text" name="category" class="form-control"/>
+									   </div>
+										<input type="submit" value="Save" class="btn btn-default"/>
 										
 															
                                       										
-                                        <button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Save</a></button>										
                                         <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Exit</a></button>
 										
