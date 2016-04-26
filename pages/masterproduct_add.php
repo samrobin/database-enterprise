@@ -1,3 +1,16 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+	//$sql = "SELECT * FROM master_barang";
+	//$hasil = mysqli_query($k,$sql);
+	
+	$sql = "SELECT * FROM master_brand";
+	$hasil = mysqli_query($k,$sql);
+	
+	$sql2 = "SELECT * FROM master_category";
+	$hasil2 = mysqli_query($k,$sql2);
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,57 +138,58 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                   
+									 <form role="form" action="masterproduct_add_proses.php" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <div class="form-group">
-												<select class="form-control">
-													<option>Handphone</option>
-													<option>Laptop</option>
-													<option>Tablet</option>
-													
-												</select>
-											</div>
-                                        </div>
+                                            <select name="category" class="form-control">
+												<?php
+												while($b = mysqli_fetch_array($hasil2)){
+												?>
+											<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
+											<?php } ?>
+											</select>
+											</div> 
+                                        
                                         <div class="form-group">
                                             <label>Brand</label>
-                                            <div class="form-group">
-												<select class="form-control">
-													<option>Samsung</option>
-													<option>Asus</option>
-													<option>Xiaomi</option>
-													<option>Sony</option>
-													<option>Infinix</option>
-												</select>
+                                            <select name="brand" class="form-control">
+											<?php
+											while($b = mysqli_fetch_array($hasil)){
+											
+											?>
+											<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
+											<?php } ?>
+											</select>
 											</div>
                                         </div>
+										</div>
 										<div class="form-group">
                                             <label>Product Code</label>
-                                            <input class="form-control">
-                                        </div>
+                                            <input type="text" name="kode" class="form-control"/>
+									   </div>
+									   
 										<div class="form-group">
                                             <label>Product Name</label>
-                                            <input class="form-control">
+                                            <input type="text" name="nama" class="form-control"/>
                                         </div>
 										<div class="form-group">
                                             <label>Buy Price</label>
-                                            <input class="form-control">
-                                           
+                                            <input type="text" name="hargabeli" class="form-control"/>
                                         </div>
 										<div class="form-group">
                                             <label>Sell Price</label>
-                                            <input class="form-control">
-                                           
+                                            <input type="text" name="hargajual" class="form-control"/>
                                         </div>
+										<input type="submit" value="Save" class="btn btn-default"/>
+						
 										
-                                      
-										
-                                        <button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Save</a></button>
+                                        <!--<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Save</a></button>-->
 										
                                         <button type="reset" class="btn btn-default"><a href="masterproduct_home.html">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Exit</a></button>
 										
-                                    </form>
+                                    
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                
@@ -186,11 +200,12 @@
 										</table>
 									</div>
 									<div class="form-group">
-										<label>File input</label>
-										<input type="file">
+										<label>foto</label>
+										<input type = "file" name="foto" />
 									</div>
                                     
                                 </div>
+								</form>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->
