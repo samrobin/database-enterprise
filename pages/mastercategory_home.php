@@ -86,27 +86,13 @@ $hasil = mysqli_query($k,$sql);
                             </div>
                             <!-- /input-group -->
                         </li>
-                         <!--  //dashboard
-						<li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-						-->
+                        
                         <li>
                             <a href="master_home.html"><i class="fa fa-bar-chart-o fa-fw"></i>Master</a>
                            
                             <!-- /.nav-second-level -->
                         </li>
-                       <!-- 
-					   <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-						-->
-						
-                        <!--
-						<li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-						-->
+                      
 						
                         <li>
                             <a href="transaction_home.html"><i class="fa fa-wrench fa-fw"></i>Transaction</a>
@@ -119,20 +105,7 @@ $hasil = mysqli_query($k,$sql);
                             <!-- /.nav-second-level -->
                         </li>
                       
-						<!--
-					  <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                             /.nav-second-level 
-                        </li>
-						-->
+						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -166,23 +139,23 @@ $hasil = mysqli_query($k,$sql);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                         <?php
+										 <?php
 											$i = 1;
 											while($b = mysqli_fetch_array($hasil)){
 											?>
-											
-						<tr onclick="location.href='mastercategory_edit.php?ed=true&id_bar=<?php echo $b['id_bar']; ?>'">
+                                        <tr onclick="location.href='mastercategory_edit.php?ed=true&id_bar=<?php echo $b['id_bar']; ?>'">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $b['nama_cat']; ?></td>
-						</tr>
-						<?php
-						$i++;
-						}
-					?>
+								</tr>
+								<?php
+								$i++;
+								}
+								?>
                                     </tbody>
                                 </table>
                             
                             <button type="submit" class="btn btn-default"><a href="mastercategory_add.php">Add</a></button>
+                            
 							
                             </div>
                             <!-- /.table-responsive -->
