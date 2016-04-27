@@ -144,36 +144,36 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-										<?php
-										if(isset($_GET['ed']) && $_GET['ed'] == true){
-										?>
+									<?php
+									if(isset($_GET['ed']) && $_GET['ed'] == true){
+									?>
                                     <form role="form" action="masterproduct_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
                    						<div class="form-group">
-										<label>Category</label>
-										<select name="category" class="form-control">
-										<?php
-										while($b = mysqli_fetch_array($hasil2)){
-										?>
-										<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
-										<?php } ?>
-										</select>
+											<label>Category</label>
+											<select name="category" class="form-control">
+											<?php
+											while($b = mysqli_fetch_array($hasil2)){
+											?>
+											<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
+											<?php } ?>
+											</select>
 										</div> 
 									
 										<div class="form-group">
-										<label>Brand</label>
-										<select name="brand" class="form-control">
-										<?php
-										while($b = mysqli_fetch_array($hasil)){
-										?>
-										<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
-										<?php } ?>
-										</select>
+											<label>Brand</label>
+											<select name="brand" class="form-control">
+											<?php
+											while($b = mysqli_fetch_array($hasil)){
+											?>
+											<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
+											<?php } ?>
+											</select>
 										</div>
 										
 										<div class="form-group">
                                             <label>Product Code</label>
                                             <input type="text" name="kode" class="form-control" value="<?php echo $b_edit['kode_bar'];?>"/>
-									   </div>
+										</div>
 										<div class="form-group">
                                             <label>Product Name</label>
                                             <input type="text" name="nama" class="form-control" value="<?php echo $b_edit['nama_bar'];?>"/>
@@ -186,26 +186,25 @@
                                             <label>Sell Price</label>
                                             <input type="text" name="hargajual" class="form-control" value="<?php echo $b_edit['hargajual_bar'];?>"/>
                                         </div>
-										
-										<div class="col-lg-6">
-										<div class="form-group">
-										<label>foto</label>
-										<img src="<?php echo $b_edit['foto_bar']; ?>" />
-										<input type = "file" name="foto" />
-										</div class="form-group">
-										</div>
-                                      
 										<input type="submit" name="edit" value="Save" class="btn btn-default"/>
 										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>
                                         <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Delete</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Exit</a></button>
-										
-										
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">											
+												<img src="<?php echo $b_edit['foto_bar']; ?>" />
+											</div>
+											<div class="form-group">
+												<input type = "file" name="foto" />
+											</div>
+										</div>
+                                     
                                     </form>
 									
 								<?php } ?>
-                                </div>
+                                
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->
