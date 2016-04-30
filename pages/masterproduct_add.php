@@ -149,9 +149,9 @@
 											<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
 											<?php } ?>
 											</select>
-											</div> 
+										</div> 
                                         
-                                        <div class="form-group">
+										<div class="form-group">
                                             <label>Brand</label>
                                             <select name="brand" class="form-control">
 											<?php
@@ -161,9 +161,8 @@
 											<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
 											<?php } ?>
 											</select>
-											</div>
-                                        </div>
 										</div>
+                                        
 										<div class="form-group">
                                             <label>Product Code</label>
                                             <input type="text" name="kode" class="form-control"/>
@@ -181,16 +180,17 @@
                                             <label>Sell Price</label>
                                             <input type="text" name="hargajual" class="form-control"/>
                                         </div>
+										<!--<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Save</a></button>-->
 										<input type="submit" value="Save" class="btn btn-default"/>
-						
-										
-                                        <!--<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Save</a></button>-->
-										
                                         <button type="reset" class="btn btn-default"><a href="masterproduct_home.html">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.html">Exit</a></button>
+								 </div>
+							
+										
+                                       
 										
                                     
-                                </div>
+                                
                                 <!-- /.col-lg-6 (nested) -->
                                
 							    <div class="col-lg-6">
@@ -200,10 +200,10 @@
 										</table>
 									</div>
 									<div class="form-group">
-										<label>foto</label>
+										
 										<input type = "file" name="foto" />
 									</div>
-                                    
+                                     
                                 </div>
 								</form>
                                 <!-- /.col-lg-6 (nested) -->
