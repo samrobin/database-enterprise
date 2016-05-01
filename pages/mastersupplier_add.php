@@ -1,3 +1,7 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,7 +113,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Master Category</h1>
+                    <h1 class="page-header">Master Supplier</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -118,31 +122,44 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Master Category Add
+                            Master Supplier Add
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">  
+                                    <form role="form" action="mastersupplier_add_proses.php" method="post" enctype="multipart/form-data">
 										
-										<div class="form-group">
-                                            <label>Category Name</label>
-                                            <input class="form-control" value="saad" >
-                                        </div>
+											<div class="form-group">
+                                            <label>Customer Name</label>
+                                            <input type="text" name="nama" class="form-control"/>
+											</div>
+											
+                                        <div class="form-group">
+										<label>Sex</label>
+										<input type="radio" name="jk" value="L" /> Male
+										<input type="radio" name="jk" value="P" /> Female
+										</div>
 										
-															
-                                      										
-                                        <button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Save</a></button>	
-										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>												
-                                        <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Delete</a></button>
-										<button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Exit</a></button>
-										
-                                    </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                               
-							   
+                                         <div class="form-group">
+                                            <label>Address</label>
+											<!--<textarea class="form-control" rows="3"></textarea>-->
+                                            <input type="text" rows="3" name="alamat" class="form-control"/>
+											</div>
+											
+											
+                                            <!--<textarea class="form-control" rows="3"></textarea>-->    
+											
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="text" name="telepon" class="form-control"/>
+											</div>		
+											
+                                      	<button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>													
+                                        <button type="reset" class="btn btn-default">Reset</a></button>
+										<button type="submit" class="btn btn-default"><a href="mastersupplier_home.php">Exit</a></button>
+										 </div>
+                           
+								</form>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->

@@ -1,3 +1,15 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+
+	if(isset($_GET['ed']) && $_GET['ed'] == true)
+	{
+		$sql = "SELECT * FROM master_category
+		WHERE id_cat = $_GET[id]";
+		$hasil = mysqli_query($k,$sql);
+		$b = mysqli_fetch_array($hasil);
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,9 +61,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            
-            <!-- /.navbar-top-links -->
-			<ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>Selamat datang <?php echo $_SESSION['nama_user']; ?> <i class="fa fa-caret-down"></i>
@@ -66,8 +76,8 @@
                 </li>
                 <!-- /.dropdown -->
 			</ul>
-			
-			
+            <!-- /.navbar-top-links -->
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -88,7 +98,7 @@
                             
                             <!-- /.nav-second-level -->
                         </li>
-                       
+                      
 						
                         <li>
                            <a href="transaction_home.html"><i class="fa fa-wrench fa-fw"></i>Transaction</a>
@@ -111,7 +121,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Master Customer</h1>
+                    <h1 class="page-header">Master Category</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -120,58 +130,34 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Master Customer Edit
+                            Master Category Add
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">                                       
-                                        
+                                    
+									<?php
+									if(isset($_GET['ed']) && $_GET['ed'] == true){
+									?>
+                                    <form role="form" action="mastercategory_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" >
 										<div class="form-group">
-                                            <label>Customer Name</label>
-                                            <input class="form-control" value="Mamat">
-                                        </div>
-										<div class="form-group">
-                                            <label>Sex</label>
-                                            <div class="form-group">
-												<select class="form-control">
-													<option>Male</option>
-													<option>Female</option>
-													<option>Other</option>													
-												</select>
-											</div>
-                                        </div>
-										<div class="form-group">
-                                            <label>Address</label>
-                                            <textarea class="form-control" rows="3">asasdhfkajsdf</textarea>                                           
-                                        </div>
-										<div class="form-group">
-                                            <label>Phone</label>
-                                            <input class="form-control" value="123213">                                           
-                                        </div>			
-                                      									
-                                        <button type="submit" class="btn btn-default"><a href="mastercustomer_home.html">Save</a></button>	
-										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>										
-                                        <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="mastercustomer_home.html">Delete</a></button>
-										<button type="submit" class="btn btn-default"><a href="mastercustomer_home.html">Exit</a></button>
+                                            <label>Category Name</label>
+                                            <input type="text" name="name" class="form-control" value="<?php echo $b['nama_cat'];?>"/>
+										</div>
+															
+                                      										
+                                        <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>	
+										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>												
+                                        <button type="reset" class="btn btn-default">Reset</a></button>
+										<button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Delete</a></button>
+										<button type="submit" class="btn btn-default"><a href="mastercategory_home.php">Exit</a></button>
 										
                                     </form>
+									<?php } ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                
-							   <div class="col-lg-6">
-									<div class="form-group">
-										<table border = 1>
-											<td width=150px height=175px></td>										
-										</table>
-									</div>
-									<div class="form-group">
-										<label>File input</label>
-										<input type="file">
-									</div>
-                                    
-                                </div>
+							   
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->

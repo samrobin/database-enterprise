@@ -143,7 +143,7 @@ $hasil = mysqli_query($k,$sql);
 											$i = 1;
 											while($b = mysqli_fetch_array($hasil)){
 											?>
-                                        <tr onclick="location.href='mastercategory_edit.php?ed=true&id_bar=<?php echo $b['id_bar']; ?>'">
+                                        <tr onclick="location.href='mastercategory_edit.php?ed=true&id=<?php echo $b['id_cat']; ?>'">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $b['nama_cat']; ?></td>
 								</tr>

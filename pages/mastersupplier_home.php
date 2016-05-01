@@ -1,3 +1,11 @@
+<?php
+require_once("../pages/lib/koneksi2.php");
+	
+$sql = "SELECT id_sup, nama_sup, jk_sup, telp_sup
+				FROM master_supplier";
+$hasil = mysqli_query($k,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,31 +141,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="location.href='mastersupplier_edit.html'">
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Male</td>
-                                            <td>4564644</td>
-											
-                                        </tr>
-                                        <tr onclick="location.href='mastersupplier_edit.html'">
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Male</td>
-                                            <td>45646456</td>
-											
-                                        </tr>
-                                        <tr onclick="location.href='mastersupplier_edit.html'">
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>Male</td>
-                                            <td>4564564654</td>
-											
-                                        </tr>
+                                        <?php
+									$i = 1;
+									while($b = mysqli_fetch_array($hasil)){
+									?>
+									<tr onclick="location.href='mastersupplier_edit.php?ed=true&id=<?php echo $b['id_sup']; ?>'">
+									<td><?php echo $i; ?></td>
+									<td><?php echo $b['nama_sup']; ?></td>
+									<td><?php echo $b['jk_sup']; ?></td>
+									<td><?php echo $b['telp_sup']; ?></td>
+									</tr>
+								<?php
+									$i++;
+								}
+								?>
                                     </tbody>
                                 </table>
                             
-                            <button type="submit" class="btn btn-default"><a href="mastersupplier_add.html">Add</a></button>
+                            <button type="submit" class="btn btn-default"><a href="mastersupplier_add.php">Add</a></button>
                             
 							
                             </div>

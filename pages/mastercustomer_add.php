@@ -1,22 +1,7 @@
 <?php
 	require_once("../pages/lib/koneksi2.php");
-	//$sql = "SELECT * FROM master_barang";
-	//$hasil = mysqli_query($k,$sql);
 	
-	$sql = "SELECT * FROM master_brand";
-	$hasil = mysqli_query($k,$sql);
-	
-	$sql2 = "SELECT * FROM master_category";
-	$hasil2 = mysqli_query($k,$sql2);
-	
-	if(isset($_GET['ed']) && $_GET['ed'] == true)
-	{
-		$sql = "SELECT * FROM master_barang WHERE id_bar = $_GET[id]";
-		$hasil_edit = mysqli_query($k,$sql);
-		$b_edit = mysqli_fetch_array($hasil_edit);
-	}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +84,7 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                       
+                        
                         <li>
                             <a href="master_home.html"><i class="fa fa-bar-chart-o fa-fw"></i>Master</a>
                             
@@ -117,9 +102,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                       
-						<!--
-					  
-						-->
+						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -130,7 +113,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Master Product</h1>
+                    <h1 class="page-header">Master Customer</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -139,73 +122,44 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Master Product Edit
+                            Master Customer Add
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
-									<?php
-									if(isset($_GET['ed']) && $_GET['ed'] == true){
-									?>
-                                    <form role="form" action="masterproduct_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
-                   						<div class="form-group">
-											<label>Category</label>
-											<select name="category" class="form-control">
-											<?php
-											while($b = mysqli_fetch_array($hasil2)){
-											?>
-											<option value="<?php echo $b['id_cat']; ?>"><?php echo $b['nama_cat']; ?></option>
-											<?php } ?>
-											</select>
-										</div> 
-									
-										<div class="form-group">
-											<label>Brand</label>
-											<select name="brand" class="form-control">
-											<?php
-											while($b = mysqli_fetch_array($hasil)){
-											?>
-											<option value="<?php echo $b['id_bra']; ?>"><?php echo $b['nama_bra'];?></option>
-											<?php } ?>
-											</select>
+                                <div class="col-lg-6">                                 
+                                        <form role="form" action="mastercustomer_add_proses.php" method="post" enctype="multipart/form-data">
+										
+											<div class="form-group">
+                                            <label>Customer Name</label>
+                                            <input type="text" name="nama" class="form-control"/>
+											</div>
+											
+                                        <div class="form-group">
+										<label>Sex</label>
+										<input type="radio" name="jk" value="L" /> Male
+										<input type="radio" name="jk" value="P" /> Female
 										</div>
 										
-										<div class="form-group">
-                                            <label>Product Code</label>
-                                            <input type="text" name="kode" class="form-control" value="<?php echo $b_edit['kode_bar'];?>"/>
-										</div>
-										<div class="form-group">
-                                            <label>Product Name</label>
-                                            <input type="text" name="nama" class="form-control" value="<?php echo $b_edit['nama_bar'];?>"/>
-                                        </div>
-										<div class="form-group">
-                                            <label>Buy Price</label>
-                                            <input type="text" name="hargabeli" class="form-control" value="<?php echo $b_edit['hargabeli_bar'];?>"/>
-                                        </div>
-										<div class="form-group">
-                                            <label>Sell Price</label>
-                                            <input type="text" name="hargajual" class="form-control" value="<?php echo $b_edit['hargajual_bar'];?>"/>
-                                        </div>					
-                                      
-										<button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>
-										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>
-                                        <button type="reset" value="Reset"class="btn btn-default">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href='masterproduct_delete_proses.php?delbar=true&id=<?php echo $b['id_bar']; ?>'>Delete</a></td></button>
-										<button type="submit" class="btn btn-default"><a href="masterproduct_home.php">Exit</a></button>
-								
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">											
-												<img src="<?php echo $b_edit['foto_bar']; ?>" />
+                                         <div class="form-group">
+                                            <label>Address</label>
+											<!--<textarea class="form-control" rows="3"></textarea>-->
+                                            <input type="text" name="alamat" class="form-control"/>
 											</div>
-											<div class="form-group">
-												<input type = "file" name="foto" />
-											</div>
-										</div>
-                                    </form>
-									
-								<?php } ?>
-                                
+											
+											
+                                            <!--<textarea class="form-control" rows="3"></textarea>-->    
+											
+                                        <div class="form-group">
+                                            <label>Phone</label>
+                                            <input type="text" name="telepon" class="form-control"/>
+											</div>		
+											
+                                      	<button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>													
+                                        <button type="reset" class="btn btn-default">Reset</a></button>
+										<button type="submit" class="btn btn-default"><a href="mastercustomer_home.php">Exit</a></button>
+										 </div>
+                           
+								</form>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->

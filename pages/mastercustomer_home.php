@@ -1,3 +1,11 @@
+<?php
+require_once("../pages/lib/koneksi2.php");
+	
+$sql = "SELECT id_cust, nama_cust, jk_cust, telp_cust
+				FROM master_customer";
+$hasil = mysqli_query($k,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,31 +149,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="location.href='mastercustomer_edit.html'">
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Male</td>
-                                            <td>4564644</td>
-											
-                                        </tr>
-                                        <tr onclick="location.href='mastercustomer_edit.html'">
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Male</td>
-                                            <td>45646456</td>
-											
-                                        </tr>
-                                        <tr onclick="location.href='mastercustomer_edit.html'">
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>Male</td>
-                                            <td>4564564654</td>
-											
-                                        </tr>
-                                    </tbody>
+                             
+									<?php
+									$i = 1;
+									while($b = mysqli_fetch_array($hasil)){
+									?>
+									<tr onclick="location.href='mastercustomer_edit.php?ed=true&id=<?php echo $b['id_cust']; ?>'">
+									<td><?php echo $i; ?></td>
+									<td><?php echo $b['nama_cust']; ?></td>
+									<td><?php echo $b['jk_cust']; ?></td>
+									<td><?php echo $b['telp_cust']; ?></td>
+									</tr>
+								<?php
+									$i++;
+								}
+								?>
+									
+								</tbody>
                                 </table>
                             
-                            <button type="submit" class="btn btn-default"><a href="mastercustomer_add.html">Add</a></button>
+                            <button type="submit" class="btn btn-default"><a href="mastercustomer_add.php">Add</a></button>
                             
                             </div>
                             <!-- /.table-responsive -->

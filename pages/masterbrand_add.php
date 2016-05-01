@@ -137,10 +137,9 @@
 										<input type="submit" value="Save" class="btn btn-default"/>
 										
 															
-                                      										
-                                        <button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Save</a></button>										
-                                        <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Exit</a></button>
+                                      	<button type="submit" value="Save" class="btn btn-default"/>Save</button>										
+                                        <button type="reset" class="btn btn-default">Reset</a></button>
+										<button type="submit" class="btn btn-default"><a href="masterbrand_home.php">Exit</a></button>
 										
                                     </form>
                                 </div>

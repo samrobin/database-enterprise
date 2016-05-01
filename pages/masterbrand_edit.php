@@ -1,3 +1,14 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+
+	if(isset($_GET['ed']) && $_GET['ed'] == true)
+	{
+		$sql = "SELECT * FROM master_brand WHERE id_bra = $_GET[id]";
+		$hasil = mysqli_query($k,$sql);
+		$b = mysqli_fetch_array($hasil);
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,25 +134,25 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">  
-										<div class="form-group">
-                                            <label>Brand Code</label>
-                                            <input class="form-control" value="saad" >
-                                        </div>
+                                    <?php
+									if(isset($_GET['ed']) && $_GET['ed'] == true){
+									?>
+                                    <form role="form" action="masterbrand_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" >
 										<div class="form-group">
                                             <label>Brand Name</label>
-                                            <input class="form-control" value="saad" >
-                                        </div>
+                                            <input type="text" name="name" class="form-control" value="<?php echo $b['nama_bra'];?>"/>
+										</div>
 										
 															
                                       										
-                                        <button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Save</a></button>	
-										<button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Edit</a></button>												
-                                        <button type="reset" class="btn btn-default"><a href="#">Reset</a></button>
+                                         <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>	
+										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>												
+                                        <button type="reset" class="btn btn-default">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Delete</a></button>
-										<button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Exit</a></button>
+										<button type="submit" class="btn btn-default"><a href="masterbrand_home.php">Exit</a></button>
 										
                                     </form>
+									<?php } ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                
