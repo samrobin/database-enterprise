@@ -179,7 +179,7 @@
                                         <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>
 										<button type="submit" class="btn btn-default">Edit</a></button>
                                         <button type="reset" value="Reset"class="btn btn-default">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href='masteruser_delete_proses.php?delbar=true&id=<?php echo $b['id_user']; ?>'>Delete</a></td></button>
+										<button type="submit" class="btn btn-default"><a href='masteruser_delete_proses.php?deluser=true&id=<?php echo $_GET['id']; ?>'>Delete</a></button>
 										<button type="submit" class="btn btn-default"><a href="masteruser_home.php">Exit</a></button>
 										
 										</div>

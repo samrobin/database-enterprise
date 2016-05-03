@@ -148,7 +148,7 @@
                                          <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>	
 										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>												
                                         <button type="reset" class="btn btn-default">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="masterbrand_home.html">Delete</a></button>
+										<button type="submit" class="btn btn-default"><a href='masterbrand_delete_proses.php?delbra=true&id=<?php echo $_GET['id']; ?>'>Delete</a></button>
 										<button type="submit" class="btn btn-default"><a href="masterbrand_home.php">Exit</a></button>
 										
                                     </form>

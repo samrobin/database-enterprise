@@ -149,7 +149,7 @@
                                         <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>	
 										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>												
                                         <button type="reset" class="btn btn-default">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="mastercategory_home.html">Delete</a></button>
+										<button type="submit" class="btn btn-default"><a href='mastercategory_delete_proses.php?delcat=true&id=<?php echo $b['id_cat']; ?>'>Delete</a></button>
 										<button type="submit" class="btn btn-default"><a href="mastercategory_home.php">Exit</a></button>
 										
                                     </form>
