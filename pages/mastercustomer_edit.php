@@ -145,7 +145,7 @@
                                         </div>
 										
 										<div class="form-group">
-										<label>Sex</label>
+										<label>Sex</label><br>
 										<input type="radio" name="jk" value="L" <?php if($b['jk_cust'] == "L") echo "checked"; ?>/> Male
 										<input type="radio" name="jk" value="P" <?php if($b['jk_cust'] == "P") echo "checked"; ?>/> Female
 										</div>

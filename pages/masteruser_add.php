@@ -124,7 +124,7 @@
                         <div class="panel-body">
 						<div class="row">
                             <div class="col-lg-6">
-								<form role="form">
+								<form role="form" action="masteruser_add_proses.php" method="post" enctype="multipart/form-data">
 										<div class="form-group">
                                             <label>Real Name</label>
                                             <input type="text" name="realname" class="form-control"/>
@@ -157,7 +157,12 @@
                                             <label>Job Title</label>
                                             <input type="text" name="jabatan" class="form-control"/>
 											</div>
-										
+											
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" name="mail" class="form-control"/>
+											</div>
+											
                                         <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>													
                                         <button type="reset" class="btn btn-default">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href="masteruser_home.php">Exit</a></button>

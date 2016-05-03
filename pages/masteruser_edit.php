@@ -1,3 +1,13 @@
+<?php
+	require_once("../pages/lib/koneksi2.php");
+
+	if(isset($_GET['ed']) && $_GET['ed'] == true)
+	{
+		$sql = "SELECT * FROM master_user WHERE id_user = $_GET[id]";
+		$hasil_edit = mysqli_query($k,$sql);
+		$b_edit = mysqli_fetch_array($hasil_edit);
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,64 +129,70 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Master User Add
+                            Master User Edit
                         </div>
                         <div class="panel-body">
 						<div class="row">
                             <div class="col-lg-6">
-								<form role="form">
+								<?php
+									if(isset($_GET['ed']) && $_GET['ed'] == true){
+									?>
+                                    <form role="form" action="masteruser_edit_proses.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
 										<div class="form-group">
                                             <label>Real Name</label>
-                                            <input type="text" name="realname" class="form-control"/>
+                                            <input type="text" name="realname" class="form-control" value="<?php echo $b_edit['nama_user']?>";/>
 										</div>
 										<div class="form-group">
                                             <label>User Name</label>
-                                            <input type="text" name="username" class="form-control"/>
+                                            <input type="text" name="username" class="form-control" value="<?php echo $b_edit['nama_user']?>"/>
 									   </div>
 									   <div class="form-group">
                                             <label>Password</label>
-                                            <input type="text" name="pass" class="form-control"/>
+                                            <input type="text" name="pass" class="form-control" value="<?php echo $b_edit['password']?>"/>
 									   </div>
 										
 										<div class="form-group">
 										<label>Sex</label><br>
-										<input type="radio" name="jk" value="L" /> Male
-										<input type="radio" name="jk" value="P" /> Female
+										<input type="radio" name="jk" value="L" <?php if($b_edit['jk_user'] == "L") echo "checked"; ?>/> Male
+										<input type="radio" name="jk" value="P" <?php if($b_edit['jk_user'] == "P") echo "checked"; ?>/> Female
 										</div>
 										
 										<div class="form-group">
                                             <label>Address</label>
 											<!--<textarea class="form-control" rows="3"></textarea>-->
-                                            <input type="text" name="alamat" class="form-control"/>
+                                            <input type="text" name="alamat" class="form-control" value="<?php echo $b_edit['alamat_user']?>"/>
 											</div>
 										<div class="form-group">
                                             <label>Phone</label>
-                                            <input type="text" name="telepon" class="form-control"/>
+                                            <input type="text" name="telepon" class="form-control" value="<?php echo $b_edit['alamat_user']?>"/>
 											</div>
 										<div class="form-group">
                                             <label>Job Title</label>
-                                            <input type="text" name="jabatan" class="form-control"/>
+                                            <input type="text" name="jabatan" class="form-control" value="<?php echo $b_edit['jabatan_user']?>"/>
+											</div>
+											
+										<div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" name="mail" class="form-control" value="<?php echo $b_edit['email']?>"/>
 											</div>
 										
-                                        <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>													
-                                        <button type="reset" class="btn btn-default">Reset</a></button>
+                                        <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>
+										<button type="submit" class="btn btn-default">Edit</a></button>
+                                        <button type="reset" value="Reset"class="btn btn-default">Reset</a></button>
+										<button type="submit" class="btn btn-default"><a href='masteruser_delete_proses.php?delbar=true&id=<?php echo $b['id_user']; ?>'>Delete</a></td></button>
 										<button type="submit" class="btn btn-default"><a href="masteruser_home.php">Exit</a></button>
+										
 										</div>
 										<div class="col-lg-6">
-									<div class="form-group">
-										<table border = 1>
-											<td width=275px height=250px></td>										
-										</table>
-									</div>
-									<div class="form-group">
-										
-										<input type = "file" name="foto" />
-									</div>
-                                     
-                                </div>
+											<div class="form-group">											
+												<img src="<?php echo $b_edit['foto_user']; ?>" />
+											</div>
+											<div class="form-group">
+												<input type = "file" name="foto" />
+											</div>
+										</div>
                                     </form>
-            
-							   
+									<?php } ?>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->

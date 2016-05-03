@@ -135,7 +135,7 @@
 											</div>
 											
                                         <div class="form-group">
-										<label>Sex</label>
+										<label>Sex</label><br>
 										<input type="radio" name="jk" value="L" /> Male
 										<input type="radio" name="jk" value="P" /> Female
 										</div>

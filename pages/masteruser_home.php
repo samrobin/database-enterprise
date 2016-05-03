@@ -1,3 +1,11 @@
+<?php
+require_once("../pages/lib/koneksi2.php");
+	
+$sql = "SELECT id_user, nama_user, jk_user, alamat_user, telp_user, jabatan_user, foto_user, email
+				FROM master_user";
+$hasil = mysqli_query($k,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,19 +17,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>SIMPLE POS</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +44,6 @@
 
     <div id="wrapper">
 
-        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,7 +71,6 @@
                 </li>
                 <!-- /.dropdown -->
 			</ul>
-            <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -83,7 +89,7 @@
                        
                         <li>
                             <a href="master_home.html"><i class="fa fa-bar-chart-o fa-fw"></i>Master</a>
-                            
+                           
                             <!-- /.nav-second-level -->
                         </li>
                        
@@ -119,73 +125,49 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Master User Add
+                            Master User
                         </div>
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
-						<div class="row">
-                            <div class="col-lg-6">
-								<form role="form">
-										<div class="form-group">
-                                            <label>Real Name</label>
-                                            <input type="text" name="realname" class="form-control"/>
-										</div>
-										<div class="form-group">
-                                            <label>User Name</label>
-                                            <input type="text" name="username" class="form-control"/>
-									   </div>
-									   <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="text" name="pass" class="form-control"/>
-									   </div>
-										
-										<div class="form-group">
-										<label>Sex</label><br>
-										<input type="radio" name="jk" value="L" /> Male
-										<input type="radio" name="jk" value="P" /> Female
-										</div>
-										
-										<div class="form-group">
-                                            <label>Address</label>
-											<!--<textarea class="form-control" rows="3"></textarea>-->
-                                            <input type="text" name="alamat" class="form-control"/>
-											</div>
-										<div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" name="telepon" class="form-control"/>
-											</div>
-										<div class="form-group">
-                                            <label>Job Title</label>
-                                            <input type="text" name="jabatan" class="form-control"/>
-											</div>
-										
-                                        <button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>													
-                                        <button type="reset" class="btn btn-default">Reset</a></button>
-										<button type="submit" class="btn btn-default"><a href="masteruser_home.php">Exit</a></button>
-										</div>
-										<div class="col-lg-6">
-									<div class="form-group">
-										<table border = 1>
-											<td width=275px height=250px></td>										
-										</table>
-									</div>
-									<div class="form-group">
-										
-										<input type = "file" name="foto" />
-									</div>
-                                     
-                                </div>
-                                    </form>
-            
-							   
-                                <!-- /.col-lg-6 (nested) -->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+											<th>No.</th>
+                                            <th>ID User</th>
+                                            <th>Name</th>
+                                            <th>Job Title</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <?php
+									$i = 1;
+									while($b = mysqli_fetch_array($hasil)){
+									?>
+									<tr onclick="location.href='masteruser_edit.php?ed=true&id=<?php echo $b['id_user']; ?>'">
+									<td><?php echo $i; ?></td>
+									<td><?php echo $b['id_user']; ?></td>
+									<td><?php echo $b['nama_user']; ?></td>
+									<td><?php echo $b['jabatan_user']; ?></td>
+									</tr>
+									<?php
+									$i++;
+									}
+									?>
+                                    </tbody>
+                                </table>
+                            
+                            <button type="submit" class="btn btn-default"><a href="masteruser_add.php">Add</a></button>
+							
+							
                             </div>
-                            <!-- /.row (nested) -->
+                            <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.col-lg-6 -->
             </div>
             <!-- /.row -->
         </div>
@@ -195,16 +177,25 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
 
 </body>
 

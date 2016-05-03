@@ -188,7 +188,7 @@
                                         </div>					
                                       
 										<button type="submit" name="edit" value="Save" class="btn btn-default"/>Save</button>
-										<button type="submit" class="btn btn-default"><a href="#">Edit</a></button>
+										<button type="submit" class="btn btn-default">Edit</a></button>
                                         <button type="reset" value="Reset"class="btn btn-default">Reset</a></button>
 										<button type="submit" class="btn btn-default"><a href='masterproduct_delete_proses.php?delbar=true&id=<?php echo $b['id_bar']; ?>'>Delete</a></td></button>
 										<button type="submit" class="btn btn-default"><a href="masterproduct_home.php">Exit</a></button>
